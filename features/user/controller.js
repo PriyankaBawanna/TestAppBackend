@@ -73,4 +73,3 @@ export const getUserDetails = async (req, res) => {
     }
   });
 };
-//http://localhost:8085/userDetails/getUserDetails/john.doe@example.com

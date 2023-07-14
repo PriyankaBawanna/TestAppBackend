@@ -1,6 +1,6 @@
 import Question from "./model.js";
 
-export const questions = async function async(req, res) {
+export const questions = async function (req, res) {
   try {
     const { question, options, correctAnswer, subject } = req.body;
 
@@ -22,3 +22,13 @@ export const questions = async function async(req, res) {
 };
 
 //http://localhost:8085/questions/addQuestion
+
+export const noOfQuestion = async (req, res) => {
+  try {
+    const numQuestions = parseInt(req.query.numQuestions); // Get the number of questions from the query parameters
+    const questions = await Question.find().limit(numQuestions);
+    res.status(200).json(questions);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to retrieve questions" });
+  }
+};
